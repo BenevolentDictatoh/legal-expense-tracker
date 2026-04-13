@@ -108,6 +108,63 @@
   color: var(--text);
 }
 
+/* ── Save status ── */
+.li-save-status-wrap {
+  display: flex;
+  align-items: center;
+  min-width: 120px;
+  justify-content: flex-end;
+}
+
+.li-unsaved {
+  font-size: 12px;
+  font-weight: 600;
+  color: #d97706;
+  letter-spacing: 0.01em;
+  animation: li-fadein 0.2s ease;
+}
+
+.li-saved {
+  font-size: 12px;
+  font-weight: 600;
+  color: #15803d;
+  animation: li-fadein 0.2s ease;
+}
+
+@keyframes li-fadein {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Save button */
+.btn-save {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: all 0.15s;
+}
+
+.btn-save:hover {
+  background: var(--accent-hover);
+}
+
+.btn-save--clean {
+  background: var(--bg);
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+  cursor: default;
+}
+
+.btn-save--clean:hover {
+  background: var(--bg);
+}
+
 /* Action buttons */
 .btn-export {
   background: var(--surface);

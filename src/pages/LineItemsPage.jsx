@@ -49,7 +49,6 @@ const billFromMatter = (matter) => ({
 
 export default function LineItemsPage() {
   const { id } = useParams()
-  const navigate = useNavigate()
   const printRef = useRef(null)
 
   const [matter, setMatter] = useState(() => getMatter(id))
@@ -60,11 +59,74 @@ export default function LineItemsPage() {
     const stored = m.lineItems || []
     return stored.length > 0 ? stored : [newItem()]
   })
-  const [view, setView] = useState('edit') // 'edit' | 'preview'
+  const [view, setView] = useState('edit')
 
-  // Keep ref in sync so auto-save always sees latest matter
+  // ── Dirty / save state ──────────────────────────────────────
+  const [isDirty, setIsDirty] = useState(false)
+  const [saveStatus, setSaveStatus] = useState(null) // null | 'saved'
+  const isMounted = useRef(false)
+
+  // Keep ref in sync so save always uses latest matter
   useEffect(() => { matterRef.current = matter }, [matter])
 
+  // Arm the dirty tracker AFTER mount completes (StrictMode-safe)
+  useEffect(() => {
+    const timer = setTimeout(() => { isMounted.current = true }, 0)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Mark dirty on item changes — skips until mount is fully complete
+  useEffect(() => {
+    if (!isMounted.current) return
+    setIsDirty(true)
+    setSaveStatus(null)
+  }, [items])
+
+  // Expose a guarded navigate: prompts if dirty, otherwise navigates normally
+  const rawNavigate = useNavigate()
+  const isDirtyRef = useRef(false)
+  useEffect(() => { isDirtyRef.current = isDirty }, [isDirty])
+
+  const guardedNavigate = (to) => {
+    if (isDirtyRef.current) {
+      const ok = window.confirm(
+        'You have unsaved changes.\nLeave this page? Your changes will be lost.'
+      )
+      if (!ok) return
+    }
+    rawNavigate(to)
+  }
+
+  // Block browser tab close / page refresh when dirty
+  useEffect(() => {
+    if (!isDirty) return
+    const handler = (e) => {
+      e.preventDefault()
+      e.returnValue = ''
+    }
+    window.addEventListener('beforeunload', handler)
+    return () => window.removeEventListener('beforeunload', handler)
+  }, [isDirty])
+
+  const hourlyRate = parseFloat(matter?.experienceTier) || 0
+
+  // Recalculate time_based fees when rate changes (bail out if nothing changes)
+  useEffect(() => {
+    setItems(prev => {
+      let changed = false
+      const next = prev.map(it => {
+        if (it.fee_type !== 'time_based' || !it.qty) return it
+        const fee = (parseFloat(it.qty) || 0) * hourlyRate
+        const newFees = fee > 0 ? fee.toFixed(2) : ''
+        if (newFees === it.legalFees) return it
+        changed = true
+        return { ...it, legalFees: newFees }
+      })
+      return changed ? next : prev
+    })
+  }, [hourlyRate])
+
+  // ── Early return AFTER all hooks ────────────────────────────
   if (!matter) {
     return (
       <div className="li-not-found">
@@ -74,22 +136,7 @@ export default function LineItemsPage() {
     )
   }
 
-  const hourlyRate = parseFloat(matter.experienceTier) || 0
-
-  // Auto-save items to store whenever they change (uses ref to get freshest matter)
-  useEffect(() => {
-    saveMatter({ ...matterRef.current, lineItems: items })
-  }, [items])
-
-  // Recalculate time_based fees when rate changes
-  useEffect(() => {
-    setItems(prev => prev.map(it => {
-      if (it.fee_type !== 'time_based' || !it.qty) return it
-      const fee = (parseFloat(it.qty) || 0) * hourlyRate
-      return { ...it, legalFees: fee > 0 ? fee.toFixed(2) : '' }
-    }))
-  }, [hourlyRate])
-
+  // ── Item operations ─────────────────────────────────────────
   const addItem = () => setItems(prev => [...prev, newItem()])
 
   const updateItem = (itemId, field, value) =>
@@ -112,6 +159,7 @@ export default function LineItemsPage() {
     })
   }
 
+  // ── Totals ──────────────────────────────────────────────────
   const totals = items.reduce(
     (acc, it) => ({
       legalFees: acc.legalFees + (parseFloat(it.legalFees) || 0),
@@ -122,19 +170,33 @@ export default function LineItemsPage() {
   )
   const grandTotal = totals.legalFees + totals.disbursements
 
+  // ── Save ────────────────────────────────────────────────────
+  const doSave = (extraFields = {}) => {
+    const updated = { ...matterRef.current, ...extraFields, lineItems: items }
+    saveMatter(updated)
+    setIsDirty(false)
+    setSaveStatus('saved')
+    setTimeout(() => setSaveStatus(null), 2000)
+    return updated
+  }
+
+  const handleSave = () => doSave()
+
+  // ── Finalise toggle ─────────────────────────────────────────
   const isFinalised = matter.status === 'Finalised'
 
   const handleToggleFinalise = () => {
     const newStatus = isFinalised ? 'In Progress' : 'Finalised'
-    const updated = { ...matter, lineItems: items, status: newStatus }
-    saveMatter(updated)
+    const updated = doSave({ status: newStatus })
     setMatter(prev => ({ ...prev, status: newStatus }))
   }
 
   const handlePrint = () => window.print()
 
   const bill = billFromMatter(matter)
-  const matterLabel = matter.caseNumber || [matter.plaintiff, matter.defendant].filter(Boolean).join(' v ') || 'Matter'
+  const matterLabel = matter.caseNumber
+    || [matter.plaintiff, matter.defendant].filter(Boolean).join(' v ')
+    || 'Matter'
 
   return (
     <div className="li-page">
@@ -167,11 +229,21 @@ export default function LineItemsPage() {
               <span className="li-summary-label">Taxing</span>
               {fmtDate(matter.taxingDate)}
             </span>
-            <Link to={`/matters/${id}`} className="li-edit-link">Edit Details</Link>
+            <a href="#" className="li-edit-link" onClick={e => { e.preventDefault(); guardedNavigate(`/matters/${id}`) }}>Edit Details</a>
           </div>
         </div>
 
         <div className="li-header-actions">
+          {/* Save status indicator */}
+          <div className="li-save-status-wrap">
+            {isDirty && (
+              <span className="li-unsaved">● Unsaved changes</span>
+            )}
+            {saveStatus === 'saved' && (
+              <span className="li-saved">✓ Saved</span>
+            )}
+          </div>
+
           <div className="li-view-toggle">
             <button
               className={view === 'edit' ? 'active' : ''}
@@ -182,7 +254,17 @@ export default function LineItemsPage() {
               onClick={() => setView('preview')}
             >Preview</button>
           </div>
+
+          <button
+            className={`btn-save${isDirty ? '' : ' btn-save--clean'}`}
+            onClick={handleSave}
+            disabled={!isDirty}
+          >
+            Save
+          </button>
+
           <button className="btn-export" onClick={handlePrint}>Export PDF</button>
+
           <button
             className={`btn-finalise${isFinalised ? ' btn-finalise--reopen' : ''}`}
             onClick={handleToggleFinalise}

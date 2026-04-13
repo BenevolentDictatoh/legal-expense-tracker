@@ -5,7 +5,9 @@
       "Bash(npm run:*)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
       "mcp__Claude_Preview__preview_start",
-      "Bash(curl -s http://localhost:5173)"
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/react-router-dom/package.json'\\).version\\)\")",
+      "Bash(npx vite:*)"
     ]
   }
 }

@@ -299,7 +299,7 @@ export default function LineItemsEditor({ items, hourlyRate, onUpdate, onUpdateB
                     className="ci ci-num"
                     type="text"
                     value={item.allowed}
-                    placeholder="—"
+                    placeholder="0.00"
                     onChange={e => upd('allowed', e.target.value)}
                   />
                 </td>
