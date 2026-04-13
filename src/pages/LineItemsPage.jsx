@@ -122,10 +122,13 @@ export default function LineItemsPage() {
   )
   const grandTotal = totals.legalFees + totals.disbursements
 
-  const handleFinalise = () => {
-    saveMatter({ ...matter, lineItems: items, status: 'Finalised' })
-    setMatter(prev => ({ ...prev, status: 'Finalised' }))
-    alert('Matter finalised.')
+  const isFinalised = matter.status === 'Finalised'
+
+  const handleToggleFinalise = () => {
+    const newStatus = isFinalised ? 'In Progress' : 'Finalised'
+    const updated = { ...matter, lineItems: items, status: newStatus }
+    saveMatter(updated)
+    setMatter(prev => ({ ...prev, status: newStatus }))
   }
 
   const handlePrint = () => window.print()
@@ -180,7 +183,12 @@ export default function LineItemsPage() {
             >Preview</button>
           </div>
           <button className="btn-export" onClick={handlePrint}>Export PDF</button>
-          <button className="btn-finalise" onClick={handleFinalise}>Finalise Statement</button>
+          <button
+            className={`btn-finalise${isFinalised ? ' btn-finalise--reopen' : ''}`}
+            onClick={handleToggleFinalise}
+          >
+            {isFinalised ? 'Reopen Matter' : 'Finalise Statement'}
+          </button>
         </div>
       </div>
 

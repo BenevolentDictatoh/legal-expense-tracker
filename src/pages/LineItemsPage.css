@@ -144,6 +144,14 @@
   opacity: 0.85;
 }
 
+.btn-finalise--reopen {
+  background: #15803d;
+}
+
+.btn-finalise--reopen:hover {
+  opacity: 0.85;
+}
+
 /* ── Toolbar ── */
 .li-toolbar {
   display: flex;

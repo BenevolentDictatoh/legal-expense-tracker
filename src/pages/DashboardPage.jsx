@@ -77,6 +77,7 @@ export default function DashboardPage() {
     return months.map(({ year, month, label }) => {
       const total = matters
         .filter(m => {
+          if (m.status !== 'Finalised') return false
           if (!m.taxingDate) return false
           const d = new Date(m.taxingDate + 'T00:00:00')
           return d.getFullYear() === year && d.getMonth() === month
@@ -160,15 +161,15 @@ export default function DashboardPage() {
           {hasChartData ? (
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={chartData} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
                 <XAxis
                   dataKey="label"
-                  tick={{ fontSize: 12, fill: 'var(--text-muted)' }}
+                  tick={{ fontSize: 12, fill: '#6b7280' }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 11, fill: 'var(--text-muted)' }}
+                  tick={{ fontSize: 11, fill: '#6b7280' }}
                   axisLine={false}
                   tickLine={false}
                   width={60}
@@ -176,9 +177,9 @@ export default function DashboardPage() {
                 />
                 <Tooltip
                   formatter={v => ['BWP ' + v.toLocaleString('en-BW', { minimumFractionDigits: 2 }), 'Legal Fees']}
-                  contentStyle={{ fontSize: 12, border: '1px solid var(--border)', borderRadius: 8 }}
+                  contentStyle={{ fontSize: 12, border: '1px solid #e5e7eb', borderRadius: 8 }}
                 />
-                <Bar dataKey="total" fill="var(--accent)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="total" fill="#4338ca" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (
