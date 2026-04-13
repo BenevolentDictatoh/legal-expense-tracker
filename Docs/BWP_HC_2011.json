@@ -1,0 +1,205 @@
+{
+  "tariff_id": "BWP_HC_2011",
+  "jurisdiction": "Botswana",
+  "court": "High Court of Botswana",
+  "legislation": "Rules of the High Court, 2011 (Statutory Instrument No. 1 of 2011) — Order 74",
+  "currency": "BWP",
+  "folio_definition_words": 300,
+  "notes": "Fixed amounts for Section C could not be confirmed from PDF source — marked as null pending verification with practitioner. Section B1(a) max of P2 appears to be a likely printing error in the Gazette — marked for verification. All 'time_based' items use hourly rates from Section I.",
+
+  "hourly_rates": {
+    "section": "I",
+    "description": "Party and Party Scale — hourly rates by years of experience",
+    "note": "These are MAXIMUM recoverable rates on a party-and-party basis. Attorney-and-client rates are agreed separately between attorney and client.",
+    "rates": [
+      { "tier": "Pupil attorney",       "min_years": null, "max_years": 0,  "max_rate_bwp": 0    },
+      { "tier": "0–2 years",            "min_years": 0,    "max_years": 2,  "max_rate_bwp": 400  },
+      { "tier": "2–5 years",            "min_years": 2,    "max_years": 5,  "max_rate_bwp": 500  },
+      { "tier": "5–10 years",           "min_years": 5,    "max_years": 10, "max_rate_bwp": 700  },
+      { "tier": "10–15 years",          "min_years": 10,   "max_years": 15, "max_rate_bwp": 850  },
+      { "tier": "Over 15 years",        "min_years": 15,   "max_years": null,"max_rate_bwp": 1000 }
+    ]
+  },
+
+  "sections": [
+
+    {
+      "code": "A",
+      "label": "Taking Instructions",
+      "items": [
+        { "code": "A1", "description": "To institute or defend any proceeding",                                                        "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "A2", "description": "For advice on evidence or on commission",                                                      "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "A3", "description": "For case on opinion, or for advocate's guidance in preparing pleadings including exceptions",   "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "A4", "description": "For statement of witness",                                                                     "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "A5", "description": "To set down cause, issue subpoena or any other simple instructions",                           "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "A6", "description": "To draft a petition or affidavit",                                                             "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "A7", "description": "To note an appeal",                                                                            "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "A8", "description": "To prosecute or defend an appeal (exclusive of perusal of the record)",                        "fee_type": "time_based", "unit": "per_hour",      "amount": null }
+      ]
+    },
+
+    {
+      "code": "B",
+      "label": "Attendance and Perusal",
+      "notes": "Fee is per folio (300 words). B1a max of P2 appears to be a printing error in the Gazette — flag for verification with practitioner.",
+      "items": [
+        {
+          "code": "B1a",
+          "description": "Attending receipt, entry, perusing and considering: any summons, petition, affidavit, pleading, advocate's advice and drafts, report, and important notice or document",
+          "fee_type": "fixed_per_folio",
+          "unit": "per_folio",
+          "amount": 5,
+          "max_amount": 2,
+          "max_amount_flagged": true,
+          "max_amount_note": "Max of P2 is likely a printing error — verify with practitioner. SA equivalent is P25,000."
+        },
+        {
+          "code": "B1b",
+          "description": "Attending receipt, entry, perusing and considering: any letter, record, stock sheets in voluntary surrenders, judgments or any other material document not elsewhere specified",
+          "fee_type": "fixed_per_folio",
+          "unit": "per_folio",
+          "first_10_folios_amount": 5,
+          "thereafter_amount": null,
+          "max_amount": 25000
+        },
+        {
+          "code": "B2",
+          "description": "Attending receipt and considering any plan, exhibit or other material document where folio basis cannot be applied",
+          "fee_type": "fixed_per_folio",
+          "unit": "per_folio",
+          "first_10_folios_amount": 5,
+          "thereafter_amount": null,
+          "max_amount": 25000
+        },
+        { "code": "B3", "description": "Making searches in offices of record",                                                    "fee_type": "time_based", "unit": "per_half_hour", "amount": null },
+        { "code": "B4", "description": "Sorting out, arranging and paginating papers for pleading, advice on evidence or brief on trial or appeal", "fee_type": "time_based", "unit": "per_half_hour", "amount": null },
+        { "code": "B5", "description": "Attending to give or take discovery",                                                    "fee_type": "time_based", "unit": "per_half_hour", "amount": null },
+        { "code": "B6", "description": "Attending on client to obtain particulars of his claim and to settle same",             "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "B7", "description": "Attending to bespeak and thereafter to procure transcription of shorthand note etc.",   "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "B8", "description": "Other attendances including telephone calls",                                            "fee_type": "time_based", "unit": "per_half_hour", "amount": null }
+      ]
+    },
+
+    {
+      "code": "C",
+      "label": "Attendance (Formal)",
+      "notes": "Fixed amounts not confirmed from PDF source — amounts marked null pending verification with practitioner.",
+      "items": [
+        { "code": "C1", "description": "To serve or deliver any necessary document, letter or despatch any telegram",  "fee_type": "fixed",      "unit": "per_attendance", "amount": null, "amount_unconfirmed": true },
+        { "code": "C2", "description": "To sue out any process or file any document",                                  "fee_type": "fixed",      "unit": "per_attendance", "amount": null, "amount_unconfirmed": true },
+        { "code": "C3", "description": "To set down causes for trial",                                                 "fee_type": "fixed",      "unit": "per_attendance", "amount": null, "amount_unconfirmed": true },
+        { "code": "C4", "description": "To search for any return",                                                     "fee_type": "fixed",      "unit": "per_attendance", "amount": null, "amount_unconfirmed": true },
+        { "code": "C5", "description": "On receipt, perusing and considering of notice of intention to defend",        "fee_type": "fixed_per_folio", "unit": "per_folio",  "amount": null, "amount_unconfirmed": true },
+        { "code": "C6", "description": "On advocate (e.g. with folio)",                                                "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "C7", "description": "On signature of powers of attorney to sue or defend",                          "fee_type": "fixed",      "unit": "per_attendance", "amount": null, "amount_unconfirmed": true },
+        { "code": "C8", "description": "Other formal attendances including telephone calls",                            "fee_type": "time_based", "unit": "per_hour",      "amount": null }
+      ]
+    },
+
+    {
+      "code": "D",
+      "label": "Drafting and Drawing",
+      "notes": "Charges in this section do not include making the first fair copy, except for items D5, D7, D8 and D10 — copy charges fall under Section F.",
+      "items": [
+        { "code": "D1",  "description": "Drafting instructions for case on opinion, for advocate's guidance in preparing pleadings (including further particulars, requests and exceptions)", "fee_type": "time_based", "unit": "per_hour", "amount": null },
+        { "code": "D2",  "description": "Drafting instructions to advocate for advice on evidence, for brief on trial or on commission",                                                       "fee_type": "time_based", "unit": "per_hour", "amount": null },
+        { "code": "D3",  "description": "Drafting instructions to advocate for argument in respect of all classes of pleading (fee for motion, petition, exception or appeal at taxing master's discretion)", "fee_type": "time_based", "unit": "per_hour", "amount": null },
+        { "code": "D4",  "description": "Drafting statements of witnesses",                                                                                                                    "fee_type": "time_based", "unit": "per_hour", "amount": null },
+        { "code": "D5",  "description": "Drawing subpoenas, powers of attorney to sue or defend, and formal notices",                                                                          "fee_type": "fixed_per_folio", "unit": "per_folio", "amount": 50 },
+        { "code": "D6",  "description": "Drafting a petition, affidavit, any notice (except formal notice), summons, further particulars, writs of execution/arrest/attachment, or any other important document not otherwise provided for", "fee_type": "time_based", "unit": "per_hour", "amount": null },
+        { "code": "D7",  "description": "Letter or telegram — first folio",                                                                                                                    "fee_type": "fixed_per_folio", "unit": "per_folio", "amount": 50 },
+        { "code": "D7b", "description": "Letter or telegram — subsequent folios",                                                                                                              "fee_type": "fixed_per_folio", "unit": "per_folio", "amount": 50 },
+        { "code": "D7c", "description": "Copy of letter to keep",                                                                                                                              "fee_type": "fixed_per_folio", "unit": "per_folio", "amount": 2  },
+        { "code": "D8",  "description": "Drawing index to brief",                                                                                                                              "fee_type": "fixed_per_folio", "unit": "per_folio", "amount": 50 },
+        { "code": "D9",  "description": "Drawing short brief",                                                                                                                                 "fee_type": "time_based",      "unit": "per_hour", "amount": null },
+        { "code": "D10", "description": "Research, preparation and drafting of heads of argument",                                                                                             "fee_type": "time_based",      "unit": "per_hour", "amount": null }
+      ]
+    },
+
+    {
+      "code": "E",
+      "label": "Appearance, Conference and Inspection",
+      "items": [
+        { "code": "E1a", "description": "Attendance by attorney when advocate is employed — to note judgment only",                                                                     "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "E1b", "description": "Attendance by attorney when advocate is employed in court, before a judge, commissioner or referee, or at an inspection — otherwise (not just noting judgment)", "fee_type": "time_based", "unit": "per_hour", "amount": null },
+        { "code": "E2",  "description": "Appearance by attorney without an advocate before a judge on request, or before a commissioner or referee",                                   "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "E3a", "description": "Appearance by attorney as counsel in court, before a judge, arbitrator, commissioner or referee, or at an inspection — maximum as for advocates", "fee_type": "time_based", "unit": "per_hour", "amount": null, "note": "Attorney cannot claim both attorney fees and counsel fees for the same service." },
+        { "code": "E3b", "description": "Conference or consultation with advocate (with or without witnesses) on pleadings, exceptions, particulars, applications, petitions, affidavits, testimony or any other matter the taxing officer deems necessary", "fee_type": "time_based", "unit": "per_half_hour", "amount": null },
+        { "code": "E4a", "description": "Conference or consultation with client, witness or opposite party, or any other conference the taxing officer deems necessary",               "fee_type": "time_based", "unit": "per_half_hour", "amount": null },
+        { "code": "E4b", "description": "Attending conference in terms of Order 42 (case management conference)",                                                                      "fee_type": "time_based", "unit": "per_half_hour", "amount": null },
+        { "code": "E5",  "description": "Any inspection in situ or otherwise",                                                                                                        "fee_type": "time_based", "unit": "per_hour",      "amount": null },
+        { "code": "E6",  "description": "Evidence: just and reasonable charges for procuring evidence and attendance of witnesses allowed on taxation (qualifying expenses require court order or consent of parties)", "fee_type": "time_based", "unit": "per_hour", "amount": null }
+      ]
+    },
+
+    {
+      "code": "F",
+      "label": "Miscellaneous",
+      "items": [
+        {
+          "code": "F1",
+          "description": "Briefing and copying: making copies for the court, for counsel, for attorney, for service or any other necessary purpose — per folio (includes first copy of any document drafted under D2, D3, D4, D5, D7 and D9)",
+          "fee_type": "fixed_per_folio",
+          "unit": "per_folio",
+          "amount_thebe": 10,
+          "amount_bwp": 0.10
+        },
+        {
+          "code": "F2",
+          "description": "Making copies of record in a civil appeal from magistrates' courts — per folio of first copy, and per folio of all other copies",
+          "fee_type": "fixed_per_folio",
+          "unit": "per_folio",
+          "amount": 2
+        },
+        { "code": "F3", "description": "Drawing up insolvency schedules including petition, affidavits and relative attendance ad jurat",                      "fee_type": "time_based", "unit": "per_hour", "amount": null },
+        { "code": "F4", "description": "For giving a verbal or written opinion (as between attorney and client)",                                               "fee_type": "time_based", "unit": "per_hour", "amount": null },
+        { "code": "F5", "description": "General: inclusive fee for consultations and discussions with client or advocate not otherwise provided or specially charged", "fee_type": "time_based", "unit": "per_hour", "amount": null }
+      ]
+    },
+
+    {
+      "code": "G",
+      "label": "Bill of Costs",
+      "description": "Fee for drawing the bill of costs itself — calculated as a percentage of total attorney fees.",
+      "items": [
+        {
+          "code": "G1",
+          "description": "For drawing the bill of costs, making necessary copies and attending settlement",
+          "fee_type": "percentage_tiered",
+          "tiers": [
+            { "on_amount_up_to": 10000,  "rate_percent": 5.0  },
+            { "on_amount_up_to": 20000,  "rate_percent": 2.5  },
+            { "on_amount_above": 200000, "rate_percent": 1.0  }
+          ]
+        },
+        {
+          "code": "G2",
+          "description": "If recourse is had to taxation: for arranging and attending taxation and obtaining consents to taxation",
+          "fee_type": "percentage_tiered",
+          "tiers": [
+            { "on_amount_up_to": 10000,  "rate_percent": 5.0  },
+            { "on_amount_up_to": 20000,  "rate_percent": 2.5  },
+            { "on_amount_above": 200000, "rate_percent": 1.5  }
+          ],
+          "note": "Only applicable if the bill is formally taxed before the Taxing Master."
+        }
+      ]
+    },
+
+    {
+      "code": "H",
+      "label": "Nominal Costs",
+      "items": [
+        {
+          "code": "H1",
+          "description": "In an undefended civil cause, where the judge does not otherwise direct — attorney may recover without tendering a bill for taxation",
+          "fee_type": "fixed_maximum",
+          "unit": "per_matter",
+          "max_amount": 1000,
+          "note": "The opposing party may still apply to have the bill taxed even if this nominal amount is claimed."
+        }
+      ]
+    }
+
+  ]
+}

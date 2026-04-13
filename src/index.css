@@ -1,0 +1,56 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Indigo accent (new design) */
+  --accent: #4338ca;
+  --accent-hover: #3730a3;
+  --accent-light: #e0e7ff;
+  --accent-text: #312e81;
+
+  /* Neutrals */
+  --bg: #f1f3f8;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --text-faint: #9ca3af;
+
+  /* Legacy (login page + bill preview) */
+  --navy: #1a2744;
+  --navy-light: #243260;
+  --gold: #c9a84c;
+  --gold-light: #e8d48a;
+
+  /* Dark bar */
+  --dark-bar: #0f172a;
+
+  --danger: #dc2626;
+  --font-ui: 'Inter', system-ui, sans-serif;
+  --font-doc: 'Times New Roman', Georgia, serif;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media print {
+  body * { visibility: hidden; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area {
+    position: fixed;
+    inset: 0;
+    background: white;
+    padding: 20mm 20mm 20mm 25mm;
+  }
+}

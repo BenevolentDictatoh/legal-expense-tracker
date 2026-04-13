@@ -1,0 +1,42 @@
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-card--accent {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.stat-card--accent .sc-label,
+.stat-card--accent .sc-value,
+.stat-card--accent .sc-sub {
+  color: white;
+}
+
+.sc-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sc-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.sc-sub {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 2px;
+}

@@ -1,0 +1,33 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  font-size: 13px;
+}
+
+.bc-item {
+  display: flex;
+  align-items: center;
+}
+
+.bc-sep {
+  margin: 0 6px;
+  color: var(--text-faint);
+  font-size: 14px;
+}
+
+.bc-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.bc-link:hover {
+  text-decoration: underline;
+}
+
+.bc-current {
+  color: var(--text-muted);
+  font-weight: 500;
+}
