@@ -16,8 +16,8 @@ export default function Sidebar({ user, onLogout }) {
       <div className="sb-brand">
         <span className="sb-logo">⚖</span>
         <div>
-          <div className="sb-title">Bill of Costs</div>
-          <div className="sb-sub">BOTSWANA LEGAL EXPENSE TRACKER</div>
+          <div className="sb-title">Mari</div>
+          <div className="sb-sub">LEGAL COST MANAGEMENT, BOTSWANA</div>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ export default function Sidebar({ user, onLogout }) {
           <span className="sb-username">{user}</span>
           <button className="sb-logout" onClick={onLogout} title="Sign out">⏻</button>
         </div>
-        <div className="sb-copy">© 2025 Bill of Costs<br />Legal Management</div>
+        <div className="sb-copy">© 2025 Mari<br />Legal Management</div>
       </div>
     </aside>
   )

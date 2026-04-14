@@ -161,15 +161,15 @@ export default function DashboardPage() {
           {hasChartData ? (
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={chartData} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
                 <XAxis
                   dataKey="label"
-                  tick={{ fontSize: 12, fill: '#6b7280' }}
+                  tick={{ fontSize: 12, fill: '#475569' }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 11, fill: '#6b7280' }}
+                  tick={{ fontSize: 11, fill: '#475569' }}
                   axisLine={false}
                   tickLine={false}
                   width={60}
@@ -177,9 +177,9 @@ export default function DashboardPage() {
                 />
                 <Tooltip
                   formatter={v => ['BWP ' + v.toLocaleString('en-BW', { minimumFractionDigits: 2 }), 'Legal Fees']}
-                  contentStyle={{ fontSize: 12, border: '1px solid #e5e7eb', borderRadius: 8 }}
+                  contentStyle={{ fontSize: 12, border: '1px solid #e2e8f0', borderRadius: 8 }}
                 />
-                <Bar dataKey="total" fill="#4338ca" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="total" fill="#1A2634" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (

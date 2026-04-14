@@ -107,7 +107,7 @@
 }
 
 .preview-table thead tr {
-  background: #1a2744;
+  background: #1A2634;
   color: white;
 }
 
@@ -146,7 +146,7 @@
 /* Totals rows */
 .totals-row {
   background: #e8ecf5;
-  border-top: 1.5pt solid #1a2744;
+  border-top: 1.5pt solid #1A2634;
 }
 
 .totals-row td, .grand-total-row td {
@@ -160,7 +160,7 @@
   font-size: 8.5pt;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #1a2744;
+  color: #1A2634;
 }
 
 .total-cell {
@@ -169,7 +169,7 @@
 }
 
 .grand-total-row {
-  background: #1a2744;
+  background: #1A2634;
   color: white;
 }
 

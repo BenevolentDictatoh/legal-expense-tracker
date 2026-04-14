@@ -5,31 +5,32 @@
 }
 
 :root {
-  /* Indigo accent (new design) */
-  --accent: #4338ca;
-  --accent-hover: #3730a3;
-  --accent-light: #e0e7ff;
-  --accent-text: #312e81;
+  /* Mari brand palette */
+  --accent: #1A2634;
+  --accent-hover: #111e2b;
+  --accent-light: #e8edf3;
+  --accent-text: #1A2634;
 
   /* Neutrals */
-  --bg: #f1f3f8;
+  --bg: #F8FAFC;
   --surface: #ffffff;
-  --border: #e5e7eb;
-  --text: #111827;
-  --text-muted: #6b7280;
-  --text-faint: #9ca3af;
+  --border: #e2e8f0;
+  --text: #1A2634;
+  --text-muted: #475569;
+  --text-faint: #94A3B8;
 
   /* Legacy (login page + bill preview) */
-  --navy: #1a2744;
-  --navy-light: #243260;
+  --navy: #1A2634;
+  --navy-light: #253345;
   --gold: #c9a84c;
   --gold-light: #e8d48a;
 
   /* Dark bar */
-  --dark-bar: #0f172a;
+  --dark-bar: #1A2634;
 
   --danger: #dc2626;
   --font-ui: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Manrope', 'Inter', system-ui, sans-serif;
   --font-doc: 'Times New Roman', Georgia, serif;
 }
 
@@ -42,6 +43,10 @@ body {
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 {
+  font-family: var(--font-heading);
 }
 
 @media print {
