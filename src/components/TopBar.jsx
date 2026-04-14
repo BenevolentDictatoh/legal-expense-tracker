@@ -5,7 +5,7 @@ export default function TopBar({ user }) {
     <header className="topbar">
       <div className="topbar-brand">
         <span className="topbar-logo">⚖</span>
-        <span className="topbar-title">Mari</span>
+        <span className="topbar-title">Ciki</span>
       </div>
 
       <div className="topbar-actions">

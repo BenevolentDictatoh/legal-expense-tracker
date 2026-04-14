@@ -37,8 +37,8 @@ export default function LoginPage({ onLogin }) {
         <div className="login-brand">
           <span className="login-logo">⚖</span>
           <div className="login-brand-text">
-            <div className="login-title">Mari</div>
-            <div className="login-sub">Legal Cost Management, Botswana</div>
+            <div className="login-title">Ciki</div>
+            <div className="login-sub">Legal Cost Management</div>
           </div>
         </div>
 
